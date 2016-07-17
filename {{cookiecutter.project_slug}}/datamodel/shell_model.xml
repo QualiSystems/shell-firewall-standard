@@ -1,0 +1,19 @@
+<Shell>
+    <Family>{{ cookiecutter.family_name }}</Family>
+
+    <ShellAttributes>
+    </ShellAttributes>
+
+    <Models>
+        <ResourceModel Name="{{ cookiecutter.model_name }}" Description="" SupportsConcurrentCommands="true">
+            <AttachedAttributes>
+            </AttachedAttributes>
+            <AttributeValues>
+            </AttributeValues>
+            <Drivers>
+                <DriverName>{{ cookiecutter.driver_name }}</DriverName>
+            </Drivers>
+            <Scripts />
+        </ResourceModel>
+    </Models>
+</Shell>
