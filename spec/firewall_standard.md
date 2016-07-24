@@ -110,19 +110,19 @@ Note: The [ID] for each sub-resource is taken from the device itself (correspond
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
 
-##### [Vendor] [OS] Switch or [Vendor] [OS] Router or [Vendor] [OS] Wireless Controller
+##### [Vendor] [OS] Firewall
 
 Attribute Name | Details | User input?
 --- | --- | ---
 User | User with administrative privileges | Yes
 Password | Attribute of type Password | Yes
-Enable Password | Attribute of type Password | Yes
-System Name | | No
+Enable Password | Attribute of type Password, The Enable password is required by some CLI protocols such as Telnet | Yes
+System Name | A unique identifier for the device, if exists in the device terminal/os | No
 Contact Name | | No
 OS Version | | No
 Vendor | | No
-Location | | No
-Model | | No
+Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No
+Model | The device model. This information is typically used for abstract resource filtering. | No
 SNMP Read Community | | Yes
 SNMP Write Community | | Yes
 SNMP V3 User | | Yes
@@ -134,8 +134,8 @@ Console User | | Yes
 Console Port | Attributes of type Numeric | Yes
 Console Password | Attribute of type Password | Yes
 CLI Connection Type | Attribute of type Lookup. Possible values – Auto, Console, SSH, Telnet, TCP | Yes
-Power Management | Attribute of type Boolean. Possible values – True, False | Yes
-Backup Location | | Yes
+Power Management | Attribute of type Boolean. Possible values – True, False, Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status | Yes
+Backup Location | Used by the save/restore orchestration to determine where backups should be saved | Yes
 Sessions Concurrency Limit | Attributes of type Numeric. Default is 1 (no concurrency) | Yes
 
 
