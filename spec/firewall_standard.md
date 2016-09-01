@@ -234,7 +234,7 @@ Output | AutoLoadDetails | - | object | Yes | object of type AutoLoadDetails wit
 
 ### Save
 ```python
-def save (configuration_type, folder_path)
+def save (folder_path, configuration_type)
 ```
 
 ###### Description
@@ -246,13 +246,13 @@ Save
 ###### Parameters
 Input / Output | Parameter | Alias | Data Type | Required | Description
 --- | --- | --- | --- | --- | ---
-Input | configuration_type | Configuration Type | string | No | The type of configuration that will be saved. Possible values are StartUp and Running. If kept empty the default configuration type that will be used is Running.
 Input | folder_path | Folder Path | string | No | The path in which the configuration file will be saved. Won't include the name of the file but only the folder. This input is optional and in case this input is empty the value will be taken from the "Backup Location" attribute on the root resource. The path should include the protocol type, for TFTP use "tftp://asdf", for FTP use "ftp://username:password@server_address/folder1/file1.bin".
+Input | configuration_type | Configuration Type | string | No | The type of configuration that will be saved. Possible values are StartUp and Running. If kept empty the default configuration type that will be used is Running.
 Output | | | string | Yes | <FullFileName>. The configuration file name should be “[ResourceName]-[ConfigurationType]-[DDMMYY]-[HHMMSS]”.
 
 ### Restore
 ```python
-def restore (path, restore_method, configuration_type)
+def restore (path, configuration_type, restore_method)
 ```
 
 ###### Description
@@ -265,8 +265,8 @@ Restore
 Input / Output | Parameter | Alias | Data Type | Required | Description
 --- | --- | --- | --- | --- | ---
 Input | path | Path | string | Yes | The path to the configuration file, including the configuration file name. The path should include the protocol type, for TFTP use "tftp://asdf", for FTP use "ftp://username:password@server_address/folder1/file1.bin".
-Input | restore_method | Restore Method | string | No | The restore method to use when restoring the configuration file. Possible Values are Append and Override. If kept empty the restore method will be Override.
 Input | configuration_type | Configuration Type | string | No | The configuration type to restore. Possible values are StartUp and Running. If kept empty the configuration type that will be restored is Running.
+Input | restore_method | Restore Method | string | No | The restore method to use when restoring the configuration file. Possible Values are Append and Override. If kept empty the restore method will be Override.
 
 ### Load Firmware
 ```python
