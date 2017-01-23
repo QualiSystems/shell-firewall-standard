@@ -1,6 +1,6 @@
 # Firewall Shell Standard
 
-#### Version 2.0.0
+#### Version 3.0.0
 
 
 ## Introduction
@@ -12,6 +12,7 @@ The Firewall Shell Standard is a project used to define a standard for all Firew
 
 Version | Date | Notes
 --- | --- | ---
+3.0.0 | 2017-01-23 | 1) Added letters to resources address. 2) Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backword compitible.
 2.0.0 | 2016-08-16 | 1) Added a new attribute named “CLI TCP Port” on the root model. That attribute will be filled in by the administrator (optional). 2)  The "Configuration Type" input in the Save and Restore command is now not mandatory, the default value if kept empty is Running. 3) Descriptions were added to the attributes, commands and command inputs (only commands visible in the UI). 4) A “Health check” command was added. This command performs checks on the device that validates that the Shell can work. In a firewall device this checks usually include connectivity check for the protocols used by the Shell. 5) Removed the attribute “Protocol Type” from the standard. 6) Added the attributes “Enable SNMP” and “Disable SNMP” on the root model. Those attribute will allow automatic configuration of SNMP before and after the execution of the Autoload command which requires SNMP. 7) The value of the attribute “Bandwidth” is now in MB instead of Bytes. 8) Added orchestration_save and orchestration_restore commands according to the Save and Restore Orchestration Standard. Those commands wrap the Shell’s Save and Restore commands with a standard interface to be used by the Sandbox orchestration. 9) The command name and command input names are now defined in the standard. Prior to this standard version only the command alias and command input aliases were defined. 10) The inputs of the load_firmware command were changed and alligned with the inputs of the restore command. 11) The expected syntax of the path and folder_path inputs of the restore, load_firmware and save commands in case of FTP protocol was clarified. **The 9th and 10th items aren't backwards compatible and will require modification of any existing automation which calls the Shell’s commands. However, upcoming shells will still have the old commands available as hidden command so the shells themselves will remain backwards compatible until their next major verion.**
 1.0.0 | 2016-06-23 | First release of the Firewall Shell Standard
 
@@ -88,10 +89,10 @@ Addition or removal of ports from the port channel will require execution of Aut
 Family | Model | Resource Name | Resource Address
 --- | --- | --- | ---
 Firewall | [Vendor] [OS] Firewall | (user defined) | (user defined - IP)
-Chassis | Generic Chassis | Chassis[ID] | [ID]
-Module | Generic Module | Module[ID] | [ID]
-Sub Module | Generic Sub Module | SubModule[ID] | [ID]
-Port | Generic Port | The name of the interface as appears in the device. Any “/” character is replaced with “-“, spaces trimmed.] | [ID]
+Chassis | Generic Chassis | Chassis[ID] | CH[ID]
+Module | Generic Module | Module[ID] | MO[ID]
+Sub Module | Generic Sub Module | SubModule[ID] | SM[ID]
+Port | Generic Port | The name of the interface as appears in the device. Any “/” character is replaced with “-“, spaces trimmed.] | PO[ID]
 Port Channel | Generic Port Channel | The name of the interface as appears in the device. Any “/” character is replaced with “-“, spaces trimmed. | PC[ID]
 Power Port | Generic Power Port | PP[ContainerID][ID] | PP[ContainerID][ID]
 
@@ -121,10 +122,10 @@ OS Version | String | No | Version of the Operating System.
 Vendor | String | No | The name of the device manufacture.
 Location | String | No | The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
 Model | String | No | The device model. This information is typically used for abstract resource filtering.
-SNMP Read Community | String | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device.
-SNMP Write Community | String | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values.
+SNMP Read Community | Password | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device.
+SNMP Write Community | Password | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values.
 SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use.
-SNMP V3 Password | String | Yes | Relevant only in case SNMP V3 is in use.
+SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use.
 SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use.
 SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3.
 Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format.
