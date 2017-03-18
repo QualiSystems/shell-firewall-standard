@@ -4,7 +4,7 @@
 import datetime
 import json
 
-from cloudshell.shell.core.driver_context import InitCommandContext, ResourceCommandContext, AutoLoadResource, \
+from cloudshell.shell.core.context import InitCommandContext, ResourceCommandContext, AutoLoadResource, \
     AutoLoadAttribute, AutoLoadDetails, CancellationContext
 from cloudshell.shell.core.interfaces.save_restore import OrchestrationSaveResult, OrchestrationSavedArtifact, \
     OrchestrationSavedArtifactInfo, OrchestrationRestoreRules
