@@ -14,5 +14,8 @@
 	"year": "2016",
 	"version": "0.1.0",
 	"server_version" : "7.0",
-	"use_pypi_deployment_with_travis": "y"
+	"use_pypi_deployment_with_travis": "y",
+    "template_name" : "gen1/firewall",
+    "template_descr" : "1st generation shell template for a standard firewall",
+    "template_repository" : "https://github.com/QualiSystems/shell-firewall-standard"
 }
